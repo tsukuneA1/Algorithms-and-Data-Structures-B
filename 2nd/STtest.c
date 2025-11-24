@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {  int N, M, maxN = atoi(argv[1]), sw = atoi(argv[2]);
   Key v; Item item;
-  STinit(maxN); srand(1);
+  STinit(); srand(1);
   for (M = 0, N = 0; N < maxN; N++)
     {
       if (sw == 1) v = ITEMrand();
