@@ -77,8 +77,15 @@ void STsort(void (*visit)(Item))
 void
 STshow (link h, int l, int w)
 {
-  /** implement STshow **/
-
+  int i;
+  if (h->bit <= w)
+    {
+      for (i = 0; i < l; i++) printf("  ");
+      printf("(%d: %d %d)\n", key(h->item), h->bit, l);
+      return;
+    }
+  STshow(h->l, l+1, h->bit);
+  STshow(h->r, l+1, h->bit);
 }
 
 void

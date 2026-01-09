@@ -68,3 +68,48 @@ void STsort(void (*visit)(Item))
 {
     sortR(head, visit);
 }
+
+Item selectR(link h, int k)
+{
+    int t = h->l->N;
+    if (h==z) return NULLitem;
+    if (t > k) return selectR(h->l, k);
+    if (t < k) return selectR(h->r, k-t-1);
+    return h->item;
+}
+
+Item STselect(int k)
+{
+    return selectR(head, j);
+}
+
+link partR(link h, int k)
+{
+    int t = h->l->N;
+    if (t > k)
+        { h->l = partR(h->l, k); h = rotR(h); }
+    if (t < k)
+        { h->r = partR(h->r, k-t-1); h = rotL(h); }
+    return h;
+}
+
+link joinLR(link a, link b)
+{
+    if (b == z) return a;
+    b = partR(b, 0); b->l = a;
+    return b;
+}
+
+link deleteR(link h, Key v)
+{
+    link x; Key t = key(h->item);
+    if (h == z) return z;
+    if (less(v, t)) h->l = deleteR(h->l, v);
+    if (less(t, v)) h->r = deleteR(h->r, v);
+    if (eq(v, t))
+        { x = h; h = joinLR(h->l, h->r); free(x); }
+    return h;
+}
+
+void STdelete(Key v)
+    { head = deleteR(head, v); }
