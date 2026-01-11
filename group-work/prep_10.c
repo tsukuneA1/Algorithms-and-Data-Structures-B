@@ -1,7 +1,3 @@
-
-// フォルダのハイライト
-// C言語コード群は、3-gram法とMyersのビットパラレルアルゴリズムを用いた高速な編集距離検索の実装と最適化（prep_10.c, search_10.cなど）に焦点を当てている。
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
